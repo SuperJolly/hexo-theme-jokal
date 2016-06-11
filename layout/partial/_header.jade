@@ -1,0 +1,9 @@
+header
+  if config.title || config.subtitle
+    if config.title
+      #head-title
+        a(href=config.root)
+          = config.title
+    if config.subtitle
+      #head-subtitle
+        = config.subtitle

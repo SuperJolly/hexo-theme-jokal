@@ -1,0 +1,31 @@
+footer.copyright
+  - var currentYear = new Date().getFullYear();
+  - year = year === theme.startYear ? year : theme.startYear + '-' + currentYear;
+  - var i = 1;
+  ul
+    li
+      if config.title
+        a(href='javascript:void(0);')
+          = config.title + "'s blog"
+    li
+      ul.personal-link
+        li
+          a(href= theme.github.url, title= theme.github.name)
+            i.github-icon
+        li
+          a(href='mailto:'+theme.mail, title= __('mail'))
+            i.mail-icon
+        li
+          a(href= theme.rss, title='RSS')
+            i.rss-icon
+    li
+      span
+        = 'Copyright' + &#169; + #{year}
+  ul
+    li
+      .flowers
+        .fw-table
+          .fw-bowl
+            .fw-cable
+              while(i < 5)
+                div(class='leaf-'+ #{i})

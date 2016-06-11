@@ -1,0 +1,9 @@
+if page.prev || page.next
+  ul.paginator
+    li
+      if page.prev
+        a#prev-page(href=url_for(page.prev_link))
+          = __('laster')
+      if page.next
+        a#next-page(href=url_for(page.next_link))
+          = __('older')

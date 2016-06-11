@@ -1,0 +1,50 @@
+//- Index Page
+mixin list(site)
+  each post in site.posts.sort('date','desc').toArray()
+    - var line_length = Math.ceil(post.content.replace(/[^a-zA-Z0-9\s]/g,'').split(' ').length) / 200 )
+    li
+      article.post-block
+        h2.post-title
+          if post.link
+            a(href=url_for(post.path), target='_blank')
+          else
+            - var path = post.path.replace(/(\/index\.html?$)|(\/?$)/,'');
+            a(href=url_for(path))
+              = post.title ? post.title : __('no-title')
+        span.post-date
+          = full_date(new Date(post.date, 'dddd, MMMM Do YYYY'))
+        if post.excerpt
+          .post-content
+            != post.content
+        else if post.content
+          - var index = post.content.indexOf('\n')
+          .post-content
+            != index < 0 ? post.content : post.content.substring(0, index)
+        p.read-more
+          a(href=url_for(post.path))= __('readmore')
+//- Archive Page
+mixin postList()
+  - var lastYear = 0
+  for post, index in site.posts.sort('date','desc').toArray()
+    if lastYear != post.date.format('YYYY')
+      if index != 0
+        | </ul>
+      - lastYear = post.date.format('YYYY')
+      .page-year= lastYear
+      | <ul>
+      li
+        a(href=url_for(post.path))!= post.title
+      li
+        span.post-date= full_date(new Date(post.date), 'dddd, MMMM Do YYYY')
+    else
+      li
+        a(href=url_for(post.path))= post.title
+      li
+        span.post-date=full_date(new Date(post.date), 'dddd, MMMM Do YYYY')
+mixin updatePost()
+  h1.post-title!= page.title
+  if page.updated
+    span.post-block
+      |  __('updated')
+      span.update-time= full_date(new Date(page.updated), 'dddd, MMMM Do YYYY')
+  != page.content

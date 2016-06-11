@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  if is_home()
+    ul.list
+      include partial/_mixin
+      +list(site)
+    include partial/_paginator

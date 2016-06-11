@@ -1,0 +1,21 @@
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, name=viewport')
+  meta(name='description',content=(config.description||theme.description)
+  meta(name='author', content=(config.author||theme.author))
+  meta(name='keywords',content=theme.keywords)
+  title= page.title ? page.title + '|' + config.title : config.title
+  link(rel='stylesheet', type='text/css',href=url_for(theme.css) + '/style.css' + '?v=' + theme.version)
+  link(rel='stylesheet', type='text/css' href=theme.cdn.normalize + '/normalize/3.0.3/normalize.min.css')
+  link(rel='stylesheet', href=theme.cdn.fontcss + '/font-awesome/')
+  if theme.favicon
+    link(rel='Shortcur Icon', type='image/x-icon', href=theme.favicon)
+  if config.feed
+    case config.feed.type
+      when 'rss'
+        link(rel='alternate', type='application/rss+xml', title='RSS', href=url_for(config.feed.path))
+      when 'atom'
+      default
+        link(rel='alternate', type='application/atom+xml, title='Atom', href=url_for(config.feed.path))
+  include _script

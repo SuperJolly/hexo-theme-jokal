@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  include partial/_mixin
+  if is_page() && page.title.toLowerCase() == 'articles'
+    .full-pages
+      +postList()
+  else if is_page()
+    .full-pages
+      +updatePost()
+  include partial/_comments

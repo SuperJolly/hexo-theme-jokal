@@ -1,0 +1,17 @@
+keywords : 'hexo博客,FEers,前端博客'
+description :
+startYear : '2016'
+author :
+version : 0.1.0
+rss :
+css : '/css'
+github :
+  name : 'superjolly'
+  url : '//github.com/SuperJolly'
+mail : 'superjooly@gmail.com'
+cdn :
+  fontcss : '//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css'
+  normalize : '//cdn.bootcss.com/normalize/4.0.0/normalize.min.css'
+favicon : /favicon.ico
+disqus_shortname :
+duoshuo_shortname : 'superjolly'

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  if is_post()
+    .full-pages
+      h1.post-title!= page.title
+      span.post-block
+        | __('published')
+        span.date-publish= full_date(new Date(page.date), 'dddd, MMMM Do YYYY')
+      .post-content
+        != page.content
+    include partial/_paginator
